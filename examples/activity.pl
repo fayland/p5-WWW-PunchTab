@@ -2,15 +2,16 @@
 
 use strict;
 use warnings;
-use lib "lib";
+use FindBin qw/$Bin/;
+use lib "$Bin/../lib";
 use WWW::PunchTab;
 use Data::Dumper;
 
 my $pt = WWW::PunchTab->new(
-    domain     => 'www.fayland.org',
-    access_key => 'hello',
-    client_id  => '123',
-    secret_key => 'key',
+    domain     => 'fayland.org',
+    access_key => 'f4f8290698320a98b1044615e722af79',
+    client_id  => '1104891876',
+    secret_key => 'ed73f70966dd10b7788b8f7953ec1d07',
 );
 
 $pt->sso_auth(
