@@ -15,10 +15,23 @@ my $pt = WWW::PunchTab->new(
 );
 
 $pt->sso_auth(
-    {'id' => '2', 'first_name' => 'Fayland', 'last_name' => 'Lam', 'email' => 'fayland@gmail.com', 'avatar_link' => 'http://fayland.org/images/camel/kiss.jpg'}
+    {'id' => '2', 'first_name' => 'Fayland', 'last_name' => 'Lam', 'email' => 'fayland@gmail.com'}
 ) or die $pt->errstr;
 
-my $x = $pt->create_activity('view', 200) or die $pt->errstr; # view with 200 points
-print Dumper(\$x);
+# my $user = $pt->user() or die $pt->errstr;
+
+# my $x = $pt->create_activity('like', 400) or die $pt->errstr; # like with 400 points
+# print Dumper(\$x);
+
+# my $auth_status = $pt->auth_status;
+
+# my $activity = $pt->activity() or die $pt->errstr;
+# print Dumper(\$activity);
+
+my $leaderboard = $pt->leaderboard() or die $pt->errstr;
+print Dumper(\$leaderboard);
+
+#my $reward = $pt->reward() or die $pt->errstr;
+#print Dumper(\$leaderboard);
 
 1;
