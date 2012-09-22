@@ -28,10 +28,10 @@ $pt->sso_auth(
 # my $activity = $pt->activity() or die $pt->errstr;
 # print Dumper(\$activity);
 
-my $leaderboard = $pt->leaderboard() or die $pt->errstr;
-print Dumper(\$leaderboard);
-
-#my $reward = $pt->reward() or die $pt->errstr;
+#my $leaderboard = $pt->leaderboard() or die $pt->errstr;
 #print Dumper(\$leaderboard);
+
+my $reward = $pt->reward() or die $pt->errstr;
+print Dumper(\$reward);
 
 1;
