@@ -245,7 +245,6 @@ sub reward {
     my $url = "http://api.punchtab.com/v1/reward?access_token=" . $access_token;
     $url .= "&limit=$limit" if $limit;
     my $resp = $self->{ua}->get($url);
-    use Data::Dumper; print Dumper(\$resp);
     return __deal_resp($resp);
 }
 
