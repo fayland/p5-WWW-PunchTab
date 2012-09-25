@@ -207,6 +207,23 @@ sub create_activity {
 
 =pod
 
+=head3 redeem_reward
+
+     my $x = $pt->redeem_reward($reward_id) or die $pt->errstr;
+
+=cut
+
+sub redeem_reward {
+    my ($self, $reward_id) = @_;
+    my $access_token = $self->{__access_token};
+    my $resp = $self->{ua}->post("https://api.punchtab.com/v1/activity/redeem?access_token=$access_token", [
+        reward_id => $reward_id,
+    ]);
+    return __deal_resp($resp);
+}
+
+=pod
+
 =head3 leaderboard
 
      my $leaderboard = $pt->leaderboard() or die $pt->errstr;
