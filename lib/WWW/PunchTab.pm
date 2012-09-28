@@ -120,6 +120,41 @@ sub sso_auth {
 
 =pod
 
+=head3 sso_auth_js
+
+    print $pt->sso_auth_js({'id' => '2', 'first_name' => 'Fayland', 'last_name' => 'Lam', 'email' => 'fayland@gmail.com'});
+
+js sso auth example:
+
+    var _pt_pre_config = {
+        auth_request: 'xxx',
+        signature: 'xxx',
+        timestamp: 1348843966,
+        client_id: 123
+    };
+
+=cut
+
+sub sso_auth_js {
+    my $self = shift;
+    my %user = @_ % 2 ? %{$_[0]} : @_;
+
+    my $auth_request = encode_base64(encode_json(\%user));
+    my $timestamp = time();
+    my $signature = Digest::SHA::hmac_sha1_hex("$auth_request $timestamp", $self->{secret_key});
+
+    return <<JS;
+var _pt_pre_config = {
+    auth_request: '$auth_request',
+    signature: '$signature',
+    timestamp: $timestamp,
+    client_id: $self->{client_id}
+};
+JS
+}
+
+=pod
+
 =head3 auth_logout
 
     my $status = $pt->auth_logout or die $pt->errstr;
