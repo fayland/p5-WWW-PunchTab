@@ -14,7 +14,7 @@ my $pt = WWW::PunchTab->new(
     secret_key => 'ed73f70966dd10b7788b8f7953ec1d07',
 );
 
-$pt->sso_auth(
+print $pt->sso_auth_js(
     {'id' => '2', 'first_name' => 'Fayland', 'last_name' => 'Lam', 'email' => 'fayland@gmail.com'}
 ) or die $pt->errstr;
 
@@ -31,7 +31,7 @@ $pt->sso_auth(
 #my $leaderboard = $pt->leaderboard() or die $pt->errstr;
 #print Dumper(\$leaderboard);
 
-my $reward = $pt->reward() or die $pt->errstr;
-print Dumper(\$reward);
+#my $reward = $pt->reward() or die $pt->errstr;
+#print Dumper(\$reward);
 
 1;

@@ -139,7 +139,7 @@ sub sso_auth_js {
     my $self = shift;
     my %user = @_ % 2 ? %{$_[0]} : @_;
 
-    my $auth_request = encode_base64(encode_json(\%user));
+    my $auth_request = encode_base64(encode_json(\%user)); $auth_request =~ s/\n//g;
     my $timestamp = time();
     my $signature = Digest::SHA::hmac_sha1_hex("$auth_request $timestamp", $self->{secret_key});
 
